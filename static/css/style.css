@@ -1,0 +1,104 @@
+table, td, th{border: solid 1px #6495ED; border-collapse: collapse;}
+table a{color:green}
+body {
+    background: white url("../images/background.jpg") right bottom;
+}
+.lob_gc {color:#4CAF50;
+      font-family: 'Lobster';
+      }
+
+.button1 {
+    background-color: Transparent; /*#4CAF50;  - is Green */
+    background-repeat: no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    border-radius: 8px;
+    border: 1px solid grey;
+    color: grey;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    height:55px;
+    width:150px;
+    transition-delay: 0.1s;
+    transition-duration: 1.2s;
+}
+.button1:hover{
+    background-color:#0047ab;
+    border-radius: 25px;
+    
+    }
+
+  /*  .wrap {
+       overflow: hidden;
+       margin: 10px;
+    }
+    .box {
+       float: left;
+       position: relative;
+       width: 20%;
+       padding-bottom: 20%;
+    }
+    .boxInner {
+       position: absolute;
+       left: 10px;
+       right: 10px;
+       top: 10px;
+       bottom: 10px;
+       overflow: hidden;
+    }
+    /*.boxInner img {
+       width: 100%;
+    }*/
+    .boxInner .titleBox {
+       position: absolute;
+       bottom: 0;
+       left: 0;
+       right: 0;
+       margin-bottom: -50px;
+       background: Transparent;
+       background: Transparent;
+       color: Transparent;
+       padding: 10px;
+       text-align: center;
+       -webkit-transition: all 0.3s ease-out;
+       -moz-transition: all 0.3s ease-out;
+       -o-transition: all 0.3s ease-out;
+       transition: all 0.3s ease-out;
+    }
+    body.no-touch .boxInner:hover .titleBox, body.touch .boxInner.touchFocus .titleBox {
+       margin-bottom: 0;
+    }
+    @media only screen and (max-width : 480px) {
+       /* Smartphone view: 1 tile */
+       .box {
+          width: 100%;
+          padding-bottom: 100%;
+       }
+    }
+    @media only screen and (max-width : 650px) and (min-width : 481px) {
+       /* Tablet view: 2 tiles */
+       .box {
+          width: 50%;
+          padding-bottom: 50%;
+       }
+    }
+    @media only screen and (max-width : 1050px) and (min-width : 651px) {
+       /* Small desktop / ipad view: 3 tiles */
+       .box {
+          width: 33.3%;
+          padding-bottom: 33.3%;
+       }
+    }
+    @media only screen and (max-width : 1290px) and (min-width : 1051px) {
+       /* Medium desktop: 4 tiles */
+       .box {
+          width: 25%;
+          padding-bottom: 25%;
+       }
+       
+    }

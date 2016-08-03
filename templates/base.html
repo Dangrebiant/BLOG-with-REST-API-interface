@@ -1,0 +1,68 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <title>Test application</title>
+        <link rel="stylesheet" type="text/css" 
+        href="{% static 'css/bootstrap.css' %}">
+        <link rel="stylesheet" type="text/css" 
+        href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" type="text/css" 
+        href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic" >
+        <link rel="stylesheet" 
+        href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    </head>
+    <body> 
+        {% include "messages_display.html" %}  
+        <div class = "container">
+            <div class="col-md-12">
+            <div class = "content container">
+            <h1><a class = "lob_gc" href="/posts/">Test application for REST API</a></h1>
+            <div class="row">
+            <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <p class="navbar-brand">Representation:</p>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">User friendly</a></li>
+                    <li><a href="/api/posts/">API</a></li>  
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}
+                    <li><span class="glyphicon glyphicon-user">Welcome {{ user.username }}</span>
+                    <a href="{% url 'logout' %}"<span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
+                {% else %}
+                    <li><a href="{% url 'register' %}"><span class="glyphicon glyphicon-user"></span>Sign Up</a>
+                    <a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Log In</a></li>
+                {% endif %}
+                </ul>
+            </div>
+            </nav>
+            
+            <br>
+        
+                <a href="{% url 'posts:list' %}"><button type="button"
+                class="button1">Main</button></a>
+                <a href="{% url 'posts:mylist' %}"><button type="button"
+                class="button1">My posts</button></a>
+                <a href="/posts/create/"><button type="button"
+                class="button1">Create post</button></a>
+                
+            
+            <div class="well">
+                <div class="content container">
+                <div class="row">
+                    <div class="col-md-11">
+                    {% block content %}
+
+                    {% endblock content %}
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+            </div>
+            </div>
+        </div>
+    </body>
+</html>
