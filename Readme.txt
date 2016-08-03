@@ -34,13 +34,17 @@ URL Structure of the project:
         accounts/login/ - Login page.
         accounts/logout/ - Logout session
         accounts/register/ - New user registration
-    API INTERFACE
+    API INTERFACE (for CURL requests)
         api/posts/ - List of all posts 
         api/posts/my - List of all posts of current user
         api/posts/# - Details of the post (/api/posts/6)
 	api/posts/#/edit - 
         api/users/register - Creating new user
- _____________________________________       
+_____________________________________
+Superuser account:
+Login - admin, Password - password123, status - superuser
+
+_____________________________________       
  Functions:
 
     PAGINATION 
@@ -64,18 +68,27 @@ URL Structure of the project:
 	second page:
 		curl http://127.0.0.1:8000/api/posts/?offset=5
 	"?limit=#&offset=#" are not working together in curl.
-	
-	RECEIVING TOKEN:
-	curl -X POST -d "username=admin&password=password123" http://127.0.0.1:8000/api/auth/token/
 
-	MY POSTS:
+	POST DETAILS VIEW:
+	curl http://127.0.0.1:8000/api/posts/#/
+	
+	REGISTER NEW USER:
+	curl -X POST -H "Content-Type: application/json" -d"{\"username\":\"NewUser\", \"email\":\"NewUser@email.com\",\"email2\":\"NewUser@email.com\", \"password\":\"NewPass123\"}" http://127.0.0.1:8000/api/users/register/?type=post	
+
+	RECEIVING TOKEN:
+	curl -X POST -d "username=NewUser&password=NewPass123" http://127.0.0.1:8000/api/auth/token/
+
+
+	VIEW MY POSTS:
 	"<TOKEN>" - to be substituted with token
 	curl -H "Authorization: JWT <TOKEN>" http://127.0.0.1:8000/api/posts/my/
-	Example:           curl -H "Authorization: JWT seyJhbGciOiJIUz..." http://127.0.0.1:8000/api/posts/my/
+	Example:  curl -H "Authorization: JWT eyJ0eXAifkhgfHhg..." http://127.0.0.1:8000/api/posts/my/
 
 	CREATE NEW POST:
 	"<TOKEN>" - to be substituted with token
 	curl -X POST -H "Authorization: JWT <TOKEN>" -H "Content-Type: application/json" -d"{\"title\":\"YOUR TITLE TO BE PASTED HERE\", \"content\":\"YOUR CONTENT TO BE PASTED HERE\"}" http://127.0.0.1:8000/api/posts/create/?type=post
+_________________________________________
+	
 
 _________________________________________
 References:

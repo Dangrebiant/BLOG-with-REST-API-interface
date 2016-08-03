@@ -21,8 +21,13 @@ class UserDetailSerializer(ModelSerializer):
 		fields = [
 			'username',
 			'email',
-			'first_name',
+			#'password',
+			#'token',
+			'pk'
 		]
+
+
+
 
 class UserCreateSerializer(ModelSerializer):
 	email = EmailField(label = 'Email Address', )
@@ -34,7 +39,8 @@ class UserCreateSerializer(ModelSerializer):
 			'email',
 			'email2',
 			'password',
-		]
+			'pk',
+					]
 		extra_kwargs = {"password":{"write_only":True}}
 	#validation
 	def validate_email(self, value):
@@ -72,6 +78,7 @@ class UserLoginSerializer(ModelSerializer):
 			'email',
 			'password',
 			'token',
+			'id'
 		]
 		extra_kwargs = {"password":{"write_only":True}}
 	
@@ -96,8 +103,6 @@ class UserLoginSerializer(ModelSerializer):
 		if user_obj:
 			if not user_obj.check_password(password):
 				raise ValidationError("Wrong password")
-
-		data["token"] = "14vGs6kgyw8yiwoYjN7WUWOdD4gYj41B"
 
 		return data
 

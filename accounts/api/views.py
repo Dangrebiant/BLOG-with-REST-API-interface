@@ -34,6 +34,7 @@ from posts.models import Post
 from .serializers import (
 	UserCreateSerializer,
 	UserLoginSerializer,
+#	UserDetailSerializer
 	)
 
 User = get_user_model()
@@ -42,6 +43,11 @@ class UserCreateAPIView(CreateAPIView):
 	serializer_class = UserCreateSerializer
 	queryset = User.objects.all()
 	permission_classes = [AllowAny]
+
+#class UserDetailAPIView(RetrieveAPIView):
+#	serializer_class=UserDetailSerializer
+#	queryset = User.objects.all()
+
 
 class UserLoginAPIView(APIView):
 	permission_classes = [AllowAny]
