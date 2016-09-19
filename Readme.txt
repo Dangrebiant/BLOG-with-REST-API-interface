@@ -11,6 +11,7 @@ Frameworks is used in the project:
  - django 1.9.8
  - djangorestframework 3.4.1
  - djangorestframework-jwt 1.8.0
+ - Pillow 3.3.0
  
  ___________________________________
 Functionality:

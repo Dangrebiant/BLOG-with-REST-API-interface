@@ -22,20 +22,20 @@ def login_view(request):
 	return render(request, "login.html", {"form":form, "title":title})
 
 def register_view(request):
-	if request.method=='POST':
-		form=UserRegisterForm(request.POST)
-		if form.is_valid():
-			user = User.objects.create_user(
-				username = form.cleaned_data.get("username"),
-				password = form.cleaned_data.get("password1"),
-				email = form.cleaned_data.get("email")
-				)
-			password = form.cleaned_data.get("password1")
-			new_user = authenticate(username=user.username, password=password)
-			login(request,new_user)
-			return redirect("/posts/")
-		
-		return render(request, "register.html", {"form":form})
+	# if request.method=='POST':
+	title = "Register"
+	form=UserRegisterForm(request.POST)
+	if form.is_valid():
+		user = User.objects.create_user(
+			username = form.cleaned_data.get("username"),
+			password = form.cleaned_data.get("password1"),
+			email = form.cleaned_data.get("email")
+			)
+		password = form.cleaned_data.get("password1")
+		new_user = authenticate(username=user.username, password=password)
+		login(request,new_user)
+		return redirect("/posts/")
+	return render(request, "register.html", {"form":form, "title":title})
 		
 
 
